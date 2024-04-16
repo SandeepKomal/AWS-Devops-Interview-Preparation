@@ -1,0 +1,41 @@
+Hi my name is  sandeep komal , people call me komal .
+
+i hail from andhra pardesh.
+
+my highest education qualifications is Btech in ECE
+
+I have overall 6.5 plus years of experience in IT industry out of which i have 4.5 plus years of expereience in AWS devops domain
+
+Currently Im working as AWS devops enginneer in TekTrio solutions
+
+
+coming to my roles and resposibilites 
+
+1) in my current project the day to day activities are creating ci/cd pipelines in jenkins to deploy backend services on to kubenetes cluster.
+
+2) we are using terrafrom scripts to create the  infrastructure and automating the infrastructure provisioning
+
+3)we are using docker for containerisation so i have created some dockerfiles to create custom images based on the requirement
+
+4) we are using kubernetes for continer ochestration and we are using eks for backend deployment and ECS clsuter for front end deployment and for database we are using RDS
+
+5) so coming to kubernetes i have created the eks cluster and resnposible for provisiong of the cluster and creating the pods and i have written manifest files for the objects like statefulset,deployment,service,secrets,ingress and other objects too 
+
+6) so for monitoring we are using datadog ,so we are using terraform to configure the eks and ecs cluster in the datadog to check the app logs and server metrics like cpu and memory utilization and apm metrics
+
+7) we are using devsecops methodlogy in the ci/cd pipelines in the jenikns we have implemented some scanning tools like sonarqube for the code quality and trivy for code vulnerability and docker image scan
+
+8)for the ssl certificate creation we have used amazon certificate manager the service which is provided by the aws itself 
+
+9) we are using 4 enviroments in the current project dev,qa,stage and production . for the stage and prod we have steup the dr disaster recovery setup and us-east-1 and us-east-2 as our primary and secondary regions 
+ 
+
+10) other than that we are using route 53 for the the dns configuration and Application Load balancer for routing the traffic to the underlying target groups to eks pods .
+
+
+
+forntend frame work : reactjs(java script) nginx
+backend frmae work : spring boot(java) tomcat
+client: AFIOS(canada),nektar.io
+Company tektrio india based company and they have a branch in canada toronto and canada . since it is opened during covid time most of the operations run work from home.
+9 LPA

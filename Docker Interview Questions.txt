@@ -1,0 +1,226 @@
+what is docker ?
+
+Docker is a powerful opensource containerzation platform.It is used to automate the deployment of any application, using lightweight, portable containers. 
+Docker packages your application and all its dependencies together in the form of containers so as to ensure that your application works seamlessly in any environment.
+
+
+what is container or docker conatiner ?
+
+Docker containers include the application code and all of its dependencies. It shares the kernel with other containers, running as isolated processes on the host operating system.  
+Docker containers are basically runtime instances of Docker images.
+
+
+what is docker images ?
+
+docker images are the packages(bundled with application code & dependencies, software packages, etc.) for the purpose of creating containers. 
+When a user runs a Docker image, an instance of a container is created.
+
+
+What is a DockerFile?
+
+It is a text file that has all commands which need to be run for building a given image.Using docker build users can create an automated build that executes several command-line instructions in Dockerfile. This file typically includes commands to install dependencies, configure the environment, and set up the application or service within the Docker container. The Dockerfile starts with a base image and defines how to configure it with additional layers of instructions, allowing users to create custom Docker images that suit their specific needs. 
+
+exmaple :
+
+# Stage 1: Build Stage
+FROM maven:3.8.4-openjdk-17-slim AS build
+WORKDIR /app
+COPY . /app
+RUN mvn clean install
+
+# Stage 2: Runtime Stage
+FROM amazoncorretto:17
+COPY --from=build /app/target/customer-0.0.1.jar /
+EXPOSE 8081
+
+# Define the default entry point
+ENTRYPOINT ["java", "-jar"]
+
+# Define the default argument to be passed to the entry point
+CMD ["customer-0.0.1.jar"]
+
+
+
+
+front-end dockerfile 
+# Stage 1: Build stage
+FROM node:16 AS build
+COPY /. /node/
+WORKDIR /node
+RUN npm install
+RUN npm run build
+
+# Stage 2: Production stage
+FROM nginx
+COPY --from=build /node/build/ /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
+How many Docker components are there?
+
+There are three docker components, they are - Docker Client, Docker Host, and Docker Registry.
+
+Docker Client: This component performs “build” and “run” operations for the purpose of opening communication with the docker host.
+Docker Host: This component has the main docker daemon and hosts containers and their associated images. The daemon establishes a connection with the docker registry.
+Docker Registry: This component stores the docker images. There can be a public registry or a private one. The most famous public registries are Docker Hub and Docker Cloud.
+ 
+
+What can you tell about Docker Compose?
+
+It is a YAML file consisting of all the details regarding various services, networks, and volumes that are needed for setting up the Docker-based application. So, docker-compose is used for creating multiple containers, host them and establish communication between them. For the purpose of communication amongst the containers, ports are exposed by each and every container.
+
+example file :
+
+version: "2.4"
+services:
+ backend:
+   conatiner_name: springboot
+   image:
+   build: 
+context: ./
+  dockerfile :Dockerfile
+   ports:
+      - "8081:8081"
+   depends_on:
+     - db
+   networks:
+      - springboot-mysql-net
+    restart: on-failure
+ db:
+   conatiner_name: sql_db
+   image: mysql
+   environments:
+    ROOT_USERNAME:
+    ROOT_PASSWORD:
+    DB_USERNAME:
+    DB_PASSWORD:
+     
+   ports:
+     - "3306:3306"
+   networks:
+     - springboot-mysql-net
+ networks:
+  springboot-mysql-net:
+    driver: bridge
+
+
+What is Virtualization ?
+
+Hypervisor is responsible for creating the virtual environment.Virtualization lets you divide a system into a series of separate sections, each one acting as a distinct individual system. with their own operating systems and software. They share the resources of the real computer, like memory and CPU, but are kept separate from each other so they don't interfere.
+
+
+How do you find stored Docker volumes?
+Use the command: /var/lib/docker/volumes
+
+
+Describe a Docker container’s lifecycle.
+Although there are several different ways of describing the steps in a Docker container’s lifecycle, the following is the most common:
+
+Create container
+Run container
+Pause container
+Unpause container
+Start container
+Stop container
+Restart container
+Kill container
+Destroy container
+
+What do you know about the Docker system prune?
+
+It’s a command used to remove all stopped containers, unused networks, build caches, and dangling images. Prune is one of the most useful commands in Docker. 
+The syntax is:  $ docker system prune.
+
+
+Can you lose data stored in a container?
+Any data stored in a container remains there unless you delete the container.
+
+What is the docker command that lists the status of all docker containers?
+In order to get the status of all the containers, we run the below command: docker ps -a
+
+
+What command can you run to export a docker image as an archive?
+This can be done using the docker save command and the syntax is: docker save -o <exported_name>.tar <container-name>
+
+
+What is docker image registry?
+
+A Docker image registry is an area where the docker images are stored. Instead of converting the applications to containers each and every time, a developer can directly use the images stored in the registry.
+This image registry can either be public or private and Docker hub is the most popular and famous public registry available.
+The images can be pushed to Docker Hub through the docker push command.
+
+
+Vitualization and Conatinerization differences ?
+
+Virtualization lets you divide the system into series of sections and each one actinf as a individual system to run and host multiple OS on the hardware of a single physical server. 
+These virtual machines form an abstraction of the system hardware layer this means that each virtual machine on the host constitutes a physical machine.
+
+
+Containerization:
+
+conatinerziation lets you deploy multiple applications using the same operating system on a server.
+Containers form abstraction of the application layer which means that each container constitutes a different application.
+
+
+Differentiate between COPY and ADD commands that are used in a Dockerfile?
+
+Both the commands have similar functionality, but COPY is more preferred because of its higher transparency level than that of ADD.
+COPY provides just the basic support of copying local files into the container whereas ADD provides additional features like remote URL and tar extraction support.
+
+
+Can a container restart by itself?
+Yes, it is possible only while using certain docker-defined policies while using the docker run command. Following are the available policies:
+
+1. Off: In this, the container won’t be restarted in case it's stopped or it fails.
+2. On-failure: Here, the container restarts by itself only when it experiences failures not associated with the user.
+3. Unless-stopped: Using this policy, ensures that a container can restart only when the command is executed to stop it by the user.
+4. Always: Irrespective of the failure or stopping, the container always gets restarted in this type of policy.
+
+command : docker run -d /-it — restart [restart-policy-value] [container_name]
+
+
+Can you tell the differences between a docker Image and Layer?
+
+Image: This is built up from a series of read-only layers of instructions. An image corresponds to the docker container and is used for speedy operation due to the caching mechanism of each step.
+
+Layer: Each layer corresponds to an instruction of the image’s Dockerfile. In simple words, the layer is also an image but it is the image of the instructions run.
+
+
+What does the docker info command do?
+
+The command gets detailed information about Docker installed on the host system. The information can be like what is the number of containers or images and in what state they are running and hardware specifications like total memory allocated, speed of the processor, kernel version, etc.
+
+Can you tell the what are the purposes of up, run, and start commands of docker compose? 
+
+Using the up command for keeping a docker-compose up (ideally at all times), we can start or restart all the networks, services, and drivers associated with the app that are specified in the docker-compose.yml file. Now if we are running the docker-compose up in the “attached” mode then all the logs from the containers would be accessible to us. In case the docker-compose is run in the “detached” mode, then once the containers are started, it just exits and shows no logs.
+
+Using the run command, the docker-compose can run one-off or one time  or ad-hoc tasks based on the business requirements. Here, the service name has to be provided and the docker starts only that specific service and also the other services to which the target service is dependent (if any).
+This command is helpful for testing the containers and also performing tasks such as adding or removing data to the container volumes etc.
+
+Using the start command, only those containers can be restarted which were already created and then stopped. This is not useful for creating new containers on its own
+
+
+Can you tell the approach to login to the docker registry?
+Using the docker login command credentials to log in to their own cloud repositories can be entered and accessed.
+
+Difference between CMD and ENTRYPOINT in dockerfiles?
+
+In the context of Docker containers, both CMD and ENTRYPOINT are instructions used in Dockerfiles to specify the command that should be executed when a container is run. However, they serve slightly different purposes:
+
+CMD:
+
+The CMD instruction is used to provide default arguments for the executable defined in the ENTRYPOINT instruction or to specify the command to run if no ENTRYPOINT instruction is provided.
+If the Dockerfile contains multiple CMD instructions, only the last one will take effect.
+The CMD instruction can be overridden by providing arguments to the docker run command.
+If no CMD or ENTRYPOINT is specified in the Dockerfile, Docker will use a default command (usually /bin/sh -c) when the container is run.
+ENTRYPOINT:
+
+The ENTRYPOINT instruction is used to specify the executable that should be run when the container starts.
+If the Dockerfile contains multiple ENTRYPOINT instructions, only the last one will take effect.
+The ENTRYPOINT instruction cannot be overridden by providing arguments to the docker run command, but it can be extended by using the --entrypoint flag with docker run.
+If an ENTRYPOINT is specified without a CMD, Docker will use the ENTRYPOINT as the default command.
+
+
+

@@ -1,0 +1,12 @@
+1) introduction (about yourself)
+2) project explanation
+3) aws interview questions
+4)docker interview questions
+5)k8s interview questions
+6)jenkins interview questions
+7)terraform inteview questions
+8)ansible interview questions
+9)Datadog Interview questions
+10) python coding 
+
+ 

@@ -1,0 +1,4 @@
+what is AWS ECS ? how does it works?
+ 
+AWS ECS is a container orchestration service that allows you to run, stop, and manage Docker containers on a cluster of EC2 instances. You can also use AWS Fargate to run containers without having to manage servers or clusters. With ECS, you can define tasks and services that specify the Docker containers to run across your clusters. ECS handles the scheduling and execution of these containers, offering integration with AWS services like Elastic Load Balancing, Amazon VPC, and IAM for resource isolation, load balancing, and security.
+

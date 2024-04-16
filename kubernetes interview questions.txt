@@ -1,0 +1,387 @@
+What is kubernetes?
+
+Kubernetes is an open-source container ochestartion platform for managing containerized applications. Kubernetes automates the scaling, deployment, and management of containerized applications, allowing them to run consistently across different computing environments.
+
+How are Kubernetes and Docker linked?
+
+Docker builds containers, which then communicate with each other via Kubernetes. Kubernetes supports multiple container runtimes, In simple terms, Kubernetes is analogous to an operating system, and Docker containers are comparable to applications installed on that operating system.
+Docker is a containerization platform that allows developers to package and distribute their applications as self-contained units, known as containers. Kubernetes, on the other hand, kubernetes is a container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+
+
+Conatiner Orchestration ?
+
+Container orchestration is a process that involves managing and coordinating the deployment, scaling, and operation of multiple containers that run on a single server or across multiple servers. It automates container provisioning, networking, resource allocation, load balancing, availability, and lifecycle management tasks. Container orchestration tools, such as Kubernetes, Docker Swarm, and Apache Mesos, help ensure that containers work together seamlessly and efficiently to deliver the desired applications or services.
+
+what do we need conatiner Orchestration ?
+
+Container orchestration is needed to manage and automate containerized applications' deployment, scaling, and management. It helps to reduce operational overhead, increase efficiency and scalability, and ensure infrastructure availability, thus helping to improve application performance.
+
+
+Features of Kubernetes?
+
+Some of the features of Kubernetes are:
+
+Automated scheduling: Kubernetes automatically schedules containers to run on the available resources in the cluster.
+
+Self-healing capabilities: Kubernetes automatically replaces failed containers and reschedules them on healthy nodes in the cluster.
+
+Automated rollouts and rollback: Kubernetes is responsible for automating the deployment process, enabling users to roll out new versions of their applications easily and roll them back in case of any issues.
+
+Horizontal scaling and load balancing: Kubernetes automatically scales and distributes traffic across multiple instances of a containerized application.
+
+Configuration management: Kubernetes enables users to define and manage the application configuration settings separately from the application code.
+
+Service discovery & networking: Kubernetes provides a built-in service discovery mechanism to locate and communicate with other services in the cluster.
+
+Security & compliance: Kubernetes provides several security features, including access control to ensure the security of the cluster and compliance with organizational policies.
+
+
+what are clusters in kubernetes?
+ 
+Clusters in Kubernetes refer to a group of interconnected nodes that work together to efficiently and automatically run containerized applications in a distributed and fault-tolerant manner. Kubernetes clusters allow engineers to orchestrate and monitor containers across multiple physical, virtual, and cloud servers. Kubernetes clusters are designed to be highly available, resilient, and scalable. By using a cluster, engineers can take advantage of the automatic scaling and self-healing capabilities of Kubernetes for optimized application performance.
+
+
+or 
+
+Kubernetes cluster is a collection of interconnected nodes that work together to provide a platform for deploying, managing, and scaling containerized applications. The master node oversees cluster operations, while worker nodes host the application workloads.Kubernetes clusters are designed to be highly available, resilient, and scalable. By using a cluster, engineers can take advantage of the automatic scaling and self-healing capabilities of Kubernetes for optimized application performance.
+
+
+
+what is kubectl?  A Kubetcl is a command-line tool or platform through which you can pass commands to a cluster. Kubectl is the Kubernetes-specific command line tool that lets you communicate and control Kubernetes clusters. With Kubectl, you can deploy applications, inspect and manage cluster resources, view logs, and debug your applications running on Kubernetes.
+
+
+Here's a brief overview of what Kubectl can do:
+
+Create, read, update, and delete Kubernetes resources (pods, services, deployments, etc.)
+Interact with the Kubernetes API server to manage cluster resources
+Monitor the status of resources and diagnose issues
+Manage Kubernetes configurations and secrets
+View logs and metrics for applications running on the cluster.
+
+what is a node in kubenrtes?
+
+A node is the primary worker machine in the Kubernetes cluster, also known as the worker node. It has several components, including a kubelet, container runtime, and Kube proxy to communicate with the control plane. Nodes can run one or more containers and can be added or removed from the cluster dynamically.
+
+
+Control Plane:
+
+API Server: The Kubernetes API server is the central management entity for the Kubernetes cluster. It exposes the Kubernetes API, which allows users and other components to interact with the cluster. It processes REST operations, performs authentication and authorization, and enforces policies.
+
+Scheduler: The Kubernetes scheduler is responsible for assigning newly created pods to nodes within the cluster. It considers various factors such as resource requirements, node capacity, and affinity/anti-affinity rules to make optimal scheduling decisions.
+
+Controller Manager: The controller manager is a collection of controllers responsible for maintaining the desired state of the cluster. Controllers continuously monitor the cluster state and work to reconcile any differences between the current state and the desired state specified in Kubernetes objects (e.g., Deployments, ReplicaSets, Pods).
+
+etcd: etcd is a distributed key-value store used by Kubernetes to store its configuration data, representing the state of the cluster. It provides a reliable and consistent way for Kubernetes components to store and retrieve critical information, ensuring consistency and resilience.
+
+Data Plane:
+
+Kubelet: Kubelet is an agent that runs on each node in the cluster and is responsible for managing the lifecycle of pods. It communicates with the Kubernetes API server to receive instructions (such as pod specifications) and ensures that the containers within pods are running and healthy.
+
+kube-proxy: kube-proxy is a network proxy that runs on each node in the cluster. It maintains network rules on the host and performs connection forwarding for Kubernetes services. It enables communication between different parts of your application running in the cluster and ensures that the networking environment is consistent.
+
+Container Runtime: The container runtime (such as Docker or containerd) is responsible for running containers within pods. It provides an abstraction layer for managing containers, including starting, stopping, and managing their lifecycle, as well as providing isolation and resource constraints.
+
+what are the differenet services in the kubernrtes?
+
+Here are some of the services in Kubernetes:
+
+Cluster IP: This is the default service type in Kubernetes, and it exposes the service on a cluster-internal IP. This means that only the services inside the cluster can access it.
+
+Node Port: This type of service exposes the service on a static port on each node in the cluster. This makes the service accessible from outside the cluster.
+
+Load balancer: This type of service provisions an external load balancer in the cloud infrastructure and directs traffic to the Kubernetes service. This allows you to expose your service to the internet.
+
+External name: This type of service maps the service to an external DNS name. This allows you to reference external services by name from within your cluster.
+
+Tell me about load balancer in kubernetes?
+
+In Kubernetes, a load balancer is a component that distributes incoming network traffic across multiple instances of an application running in a cluster. The load balancer sends connections to one server in the pool based on an algorithm to determine the next server and sends new connections to the next server, which is available.
+
+
+what is ingress?
+
+Ingress in Kubernetes acts as a traffic manager, directing external requests to services within the cluster based on defined rules. It serves as the entry point to the Kubernetes cluster, allowing users to access applications running inside the cluster from outside. In essence, Ingress provides a way to route external HTTP and HTTPS traffic to different services within the Kubernetes environment, enabling load balancing, SSL termination, and routing based on URL paths or domain names.
+
+
+
+what is replica set and replica controller?
+
+They are the same but differ only in using selectors to reproduce pods.The replication controller allows us to create multiple pods easily, but if a pod crashes, it ensures it is replaced with a new pod. It can scale the number of pods and update or delete multiple pods with a single command.
+
+The replica set is the same as the replication controller except that they have more options for the selectors. They use set-based selectors to manage the pods. Here the rolling-update command won't work.
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: customer
+  labels:
+    app: packersmovers
+    tier: backend
+spec:
+  replicas: 5
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: packersmovers
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: packersmovers
+        tier: backend
+    spec:
+      containers:
+      - name: customer
+        image: 573567580560.dkr.ecr.ap-south-1.amazonaws.com/customer:3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+
+What do equality-based selectors do?
+
+They allow filtering by label keys and values. Thus they will only look for pods with the exact same phrase as the label. When a pod or other resource is created, it can be labeled with key-value pairs. Equality-based selectors allow you to select resources based on an exact match of those key-value pairs.
+
+
+
+List some security measures that you can take while using Kubernetes.
+
+Here are some of the security measures we can take:
+
+Limit the access to ETCD
+Implement network segmentation
+Define source quota
+Provide limited access to nodes of Kubernetes
+
+List some features of Kubernetes.
+
+Hide Answer
+Here are some of the features of Kubernetes:
+
+Manages clusters at the same time
+Monitors nodes and containers
+Scales resources vertically and horizontally
+Automated deployment and rollout of containerized applications
+Self-healing capabilities to restart or replace failed containers automatically
+Load balancing and service discovery for distributing traffic across containers
+
+
+How can you use Kubernetes for workload distribution optimization?
+
+Load balancing: Kubernetes provides a built-in load balancer to distribute incoming network traffic to the pods running on the cluster. This helps to evenly distribute the workload across the nodes in the cluster, which can help to optimize resource utilization.
+
+Auto scaling: Kubernetes can automatically scale the number of replicas of a pod based on the resource utilization of the existing pods. This helps to ensure that there are always enough resources available to handle the workload and can help to optimize resource utilization.
+
+Resource management: Kubernetes allows you to specify the resource requirements and limits for each pod, which helps to ensure that the right amount of resources is allocated to each pod.
+
+
+
+Differentiate between ConfigMaps and Secret?
+
+Where Secret stores critical data in an encrypted format, ConfigMaps stores the configuration of an application in a normal plain text format. However, both of them can be used as volume 
+and be mounted on a pod through a pod definition file.
+
+example:
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: customer-secrets
+type: Opaque
+data:
+  db-username: c3ByaW5n
+  db-password: c3ByaW5nc3ByaW5n
+  db-root-password: c3ByaW5nc3ByaW5nc3ByaW5n
+  # db-endpoint: amRiYzpteXNxbDovL3NwcmluZy5jbm84eWVjd2Fyem4udXMtZWFzdC0xLnJkcy5hbWF6b25hd3MuY29tOjMzMDYvc3ByaW5nZGI=
+
+in the spec of deployment.yaml file
+env:
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: customer-secrets
+              key: db-username
+
+Explain Kubernetes RBAC.
+
+It stands for Role-Based Access Control. It allows the management of permissions for users and groups inside a Kubernetes cluster. With RBAC, one can set access permissions and the required conditions to fulfill to gain access. Roles define a set of permissions granted to users or groups, and role bindings associate roles with specific users or groups.
+
+Using RBAC, you can limit access to sensitive resources and ensure that only authorized users and applications can perform certain actions within the cluster. This helps to improve the security and reliability of your Kubernetes environment.
+
+exmaple:
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-service-account
+  namespace: naveen
+
+[root@ip-172-31-86-45 customer]# cat role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: naveen  # Replace 'your-namespace' with your desired namespace
+  name: my-role
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+
+role binding example:
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: my-role-binding
+  namespace: naveen  # Replace 'your-namespace' with your desired namespace
+subjects:
+- kind: User
+  name: arn:aws:iam::637423236688:user/naveen1
+  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount
+  name: my-service-account  # Replace 'your-service-account' with the service account name
+  namespace: naveen  # Replace 'your-namespace' with the namespace of the service account
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: my-role  # Replace 'my-role' with the name of the Role
+  apiGroup: rbac.authorization.k8s.io
+
+
+
+Can you list some of the objects of Kubernetes?
+Here are some of the objects used by Kubernetes:
+
+Pods
+Controllers and replication set
+Cron jobs
+DaemonSets
+Distinctive identities
+Stateful sets
+Deployments
+
+
+Define StatefulSets.
+
+StatefulSets are a type of workload API that manage stateful applications. StatefulSets are often used to manage the deployment and scaling of pods that require stable network identities and persistent storage, making them well-suited for stateful workload.
+
+
+StatefulSets guarantee stable, unique identities for each pod. When pods are created or terminated, they are done so sequentially, ensuring that each pod has a stable identity.
+Deployments don't guarantee stable identities for pods. Pods can be created and terminated in any order, and the identity of the pods can change over time.
+
+
+StatefulSets are designed for stateful applications such as databases, where the ordering of pod creation and termination is important for data consistency and replication.
+Deployments are typically used for stateless applications where individual instances are interchangeable, and the order of pod creation and termination doesn't affect the application's behavior.
+
+StatefulSets are often used for applications that require manual or controlled scaling. Scaling up or down involves careful consideration of data consistency and replication.
+Deployments are designed for automatic scaling based on metrics such as CPU utilization or custom metrics. Scaling is typically faster and more automated compared to StatefulSets.
+
+
+In summary, while both StatefulSets and Deployments can utilize PVCs and PVs for persistent storage, the main differences lie in how they manage stateful applications, including pod identity, ordering, and scaling. StatefulSets are tailored for applications with stateful requirements, providing features like stable pod identities and ordered pod management, while Deployments are more suitable for stateless applications that require rapid scaling and don't rely on pod identities.
+
+
+Can you tell me some Kubectl commands?
+
+Hide Answer
+Some Kubectl commands are:
+
+kubectl annotate
+kubectl config
+kubectl autoscale
+kubectl config current-context
+kubectl apply
+kubectl config set.
+kubectl cluster-info
+kubectl attach
+kubectk get all
+kubectl logs
+kubectl describe
+
+
+Tell me about labels in Kubernetes.
+
+Labels are added to objects during their creation and can be altered by the users at run time. They are precisely collections of keys that hold some values.
+
+They are a type of metadata that work through the concept of key-value pair attached to objects. In many cases, they are also used to define "identifying aspects" of an object mainly to help the user at a later stage. Also, as they do not imply semantics to Kubernetes by default, they do not directly change any functionality like other metadata.
+
+What is persistent volume?
+
+
+Persistent volume (PV) is a storage piece that an administrator provides to a Kubernetes cluster. Suppose a developer needs persistent storage for an application in a cluster; they do so by creating a persistent volume claim (PVC) and then mounting the volume to a path in the pod. Once this process is done, the pod can claim any volume matching its requirements.
+
+How can you achieve zero downtime in Kubernetes?
+
+We can achieve zero downtime in Kubernetes through RollingUpdate strategy. It is a process that allows updating the Kubernetes system with little effect on performance and zero downtime. This strategy involves gradually replacing old instances of an application with new ones, thus ensuring that the application is always available to end-users.
+
+When you use RollingUpdate strategy, Kubernetes creates a new replica set with the updated version of your application and gradually replaces the old replica set with the new one. This ensures that the new version is rolled out to users gradually and any issues can be caught early.
+
+
+Can you tell if the rolling update with stateful set replicas = 1 looks right?
+
+No, it doesn't look right since there is only 1 replica, and any changes to the state full set may result in an outage. It means that the rolling update of a StatefulSet needs to rip apart one or more old pods before replicating them. Therefore, it's generally recommended to have at least two replicas in a StatefulSet to ensure high availability during rolling updates.
+
+
+How can you run a pod on a specific node?
+
+We can run a pod on a specific node using node affinity. Here, a node is assigned to an arbitrary label, and they are configured to be assigned to that node as per the label created.
+
+For example, this code snippet creates an arbitrary label, node location, and assigns the value Germany to the node named person-01:
+
+kubectl label nodes person-01 nodelocation=Germany
+
+
+
+
+
+what is node name node node selector node Affinity and pod Affnitiy, Taints and Tolerance ?
+
+We can run a pod on a specific node using node affinity. Here, a node is assigned to an arbitrary label, and they are configured to be assigned to that node as per the label created.
+
+For example, this code snippet creates an arbitrary label, node location, and assigns the value Germany to the node named person-01:
+
+kubectl label nodes person-01 nodelocation=Germany
+
+If a node is tainted, pods will not be scheduled on it by default, but you can use tolerations in the pod spec to allow specific pods to be scheduled on the tainted node. Tolerations are used to specify that a pod can tolerate (or "ignore") a certain taint, allowing it to be scheduled on a tainted node. This can be useful in scenarios where you want to reserve certain nodes for specific types of workloads or to mark nodes as unsuitable for certain workloads.
+
+EXIT codes in kubernetes?
+
+CODE #	            NAME	                                    WHAT IT MEANS
+Exit Code 0	Purposely stopped	        Used by developers to indicate that the container was automatically stopped
+Exit Code 1	Application error	        Container was stopped due to application error or incorrect reference in the image specification
+Exit Code 125	Container failed to run error	The docker run command did not execute successfully
+Exit Code 126	Command invoke error	        A command specified in the image specification could not be invoked
+Exit Code 127	File or directory not found	File or directory specified in the image specification was not found
+Exit Code 128	Invalid argument used on exit	Exit was triggered with an invalid exit code (valid codes are integers between 0-255)
+Exit Code 134	Abnormal termination (SIGABRT)	The container aborted itself using the abort() function.
+Exit Code 137	Immediate termination (SIGKILL)	Container was immediately terminated by the operating system via SIGKILL signal
+Exit Code 139	Segmentation fault (SIGSEGV)	Container attempted to access memory that was not assigned to it and was terminated
+Exit Code 143	Graceful termination (SIGTERM)	Container received warning that it was about to be terminated, then terminated
+Exit Code 255	Exit Status Out Of Range	Container exited, returning an exit code outside the acceptable range, meaning the cause of the error is not known
+
+
+Namespaces in Kubernetes?
+
+In Kubernetes, there are several built-in namespaces that serve different purposes. These namespaces are created by default when you set up a Kubernetes cluster. Here are some of the commonly used namespaces:
+
+Default: The default namespace where resources are created if no other namespace is specified. It's the namespace where most initial Kubernetes objects are created unless explicitly specified otherwise.
+
+kube-system: This namespace contains system-level resources and components used by Kubernetes itself. Essential components such as kube-dns, kube-proxy, and kube-controller-manager reside in this namespace.
+
+kube-public: Resources in this namespace are accessible to all users (authenticated or not) and are commonly used for exposing resources that are intended to be publicly accessible.
+
+kube-node-lease: Introduced in newer Kubernetes versions (1.14+), this namespace is used for node lease objects, which are used by the Kubernetes nodes to maintain their availability status.
+
+kube-ingress: This namespace may be used to manage resources related to Ingress controllers and associated components.
+
+kube-ingress-controllers: Similar to the kube-ingress namespace, this namespace may be used to manage resources related to Ingress controllers, but it's more specific to certain types of Ingress controllers or configurations.
+
+
+what is the version of kubernetes you are using ?
+
+1.28
+
+what is hpa and vpa ? 
+
+hpa: HPA automatically scales the number of pods in a replication controller, deployment, replica set, or stateful set based on observed CPU utilization or other application-provided metrics. It ensures that there are enough pods to handle the current load on the application, thus providing elasticity and efficient resource utilization.
+
+vpa: Vertical Pod Autoscaler (VPA) adjusts how much CPU and memory each pod requests based on its actual usage. Instead of adding or removing pods like the Horizontal Pod Autoscaler (HPA), VPA fine-tunes the resources allocated to existing pods to improve efficiency and performance.
+
+
