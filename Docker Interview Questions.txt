@@ -1,13 +1,12 @@
 what is docker ?
 
 Docker is a powerful opensource containerzation platform.It is used to automate the deployment of any application, using lightweight, portable containers. 
-Docker packages your application and all its dependencies together in the form of containers so as to ensure that your application works seamlessly in any environment.
+Docker packages your application and all its dependencies together in the form of containers so as to ensure that your application works seamlessly in any environment.Unlike traditional virtual machines, Docker containers share the host system's kernel and only include the necessary libraries and binaries for the application, making them lightweight and efficient.
 
 
 what is container or docker conatiner ?
 
-Docker containers include the application code and all of its dependencies. It shares the kernel with other containers, running as isolated processes on the host operating system.  
-Docker containers are basically runtime instances of Docker images.
+Docker containers include the application code and all of its dependencies. It shares the kernel with other containers, running as isolated processes on the host operating system. Docker containers are basically runtime instances of Docker images.
 
 
 what is docker images ?
@@ -26,7 +25,7 @@ exmaple :
 FROM maven:3.8.4-openjdk-17-slim AS build
 WORKDIR /app
 COPY . /app
-RUN mvn clean install
+RUN mvn clean install 
 
 # Stage 2: Runtime Stage
 FROM amazoncorretto:17
@@ -108,7 +107,7 @@ context: ./
 
 What is Virtualization ?
 
-Hypervisor is responsible for creating the virtual environment.Virtualization lets you divide a system into a series of separate sections, each one acting as a distinct individual system. with their own operating systems and software. They share the resources of the real computer, like memory and CPU, but are kept separate from each other so they don't interfere.
+Hypervisor is responsible for creating the virtual environment.Virtualization lets you divide a system into a series of separate sections, each one acting as a distinct individual system with their own operating systems and software. They share the resources of the real computer, like memory and CPU, but are kept separate from each other so they don't interfere.
 
 
 How do you find stored Docker volumes?
@@ -154,7 +153,7 @@ The images can be pushed to Docker Hub through the docker push command.
 
 Vitualization and Conatinerization differences ?
 
-Virtualization lets you divide the system into series of sections and each one actinf as a individual system to run and host multiple OS on the hardware of a single physical server. 
+Virtualization lets you divide the system into series of sections and each one acts as a individual system to run and host multiple OS on the hardware of a single physical server. 
 These virtual machines form an abstraction of the system hardware layer this means that each virtual machine on the host constitutes a physical machine.
 
 
@@ -215,12 +214,22 @@ The CMD instruction is used to provide default arguments for the executable defi
 If the Dockerfile contains multiple CMD instructions, only the last one will take effect.
 The CMD instruction can be overridden by providing arguments to the docker run command.
 If no CMD or ENTRYPOINT is specified in the Dockerfile, Docker will use a default command (usually /bin/sh -c) when the container is run.
+ 
 ENTRYPOINT:
 
 The ENTRYPOINT instruction is used to specify the executable that should be run when the container starts.
 If the Dockerfile contains multiple ENTRYPOINT instructions, only the last one will take effect.
 The ENTRYPOINT instruction cannot be overridden by providing arguments to the docker run command, but it can be extended by using the --entrypoint flag with docker run.
 If an ENTRYPOINT is specified without a CMD, Docker will use the ENTRYPOINT as the default command.
+
+
+
+Traditional Docker File vs Multi stage Dockerfile ?
+
+In a traditional Dockerfile, you typically include all the necessary steps to build your application, which often results in larger image sizes because the intermediate artifacts and dependencies are retained in the final image.
+
+
+With multi-stage builds, you can define multiple "stages" in your Dockerfile, each with its own set of instructions and environment. These stages are independent and can copy artifacts from one stage to another, but only the final stage's filesystem is included in the resulting image. This means you can have a build stage where you compile your code and gather dependencies, and then a separate stage where you copy only the necessary artifacts from the build stage into a clean environment.
 
 
 
