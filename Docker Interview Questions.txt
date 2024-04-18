@@ -6,7 +6,9 @@ Docker packages your application and all its dependencies together in the form o
 
 what is container or docker conatiner ?
 
-Docker containers include the application code and all of its dependencies. It shares the kernel with other containers, running as isolated processes on the host operating system. Docker containers are basically runtime instances of Docker images.
+Docker containers include the application code and all of its dependencies. 
+It shares the kernel with other containers, running as isolated processes on the host operating system. 
+Docker containers are basically runtime instances of Docker images.
 
 
 what is docker images ?
