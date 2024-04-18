@@ -36,6 +36,5 @@ coming to my roles and resposibilites
 
 forntend frame work : reactjs(java script) nginx
 backend frmae work : spring boot(java) tomcat
-client: AFIOS(canada),nektar.io
-Company tektrio india based company and they have a branch in canada toronto and canada . since it is opened during covid time most of the operations run work from home.
-9 LPA
+client: 
+
