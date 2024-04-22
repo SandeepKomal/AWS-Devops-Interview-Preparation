@@ -1,6 +1,15 @@
 VPC (Virtual Private Cloud): VPC allows you to create a virtual network in the AWS cloud where you can launch AWS resources such as EC2 instances, RDS databases, and more. It provides you with control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.
 
-Subnets: Subnets are subdivisions of a VPC's IP address range where you can place groups of resources. They allow you to segment your network for better organization, security, and resource isolation. Subnets can be public (accessible from the internet) or private (accessible only from within the VPC or via a VPN connection).
+Subnets: Subnets are subdivisions of a VPC's IP address range where you can place groups of resources. Within your VPC, you can create one or more subnets. Each subnet is associated with a specific availability zone within a region and represents a range of IP addresses within the larger VPC IP address range. They allow you to segment your network for better organization, security, and resource isolation. Subnets can be public (accessible from the internet) or private (accessible only from within the VPC or via a VPN connection).
+
+Route tables: A route table is a set of rules, known as routes, that determine where network traffic is directed. In the context of a VPC, you can create and manage route tables to control the flow of traffic between different subnets within the VPC and between the VPC and other networks, such as the internet or on-premises networks. Each subnet in a VPC must be associated with a route table, and you can customize the routes in the table to specify how traffic should be routed.
+
+
+Internet Gateways:An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet. It essentially serves as a gateway through which traffic can flow to and from the internet. To enable internet access for resources within your VPC, you attach an internet gateway to your VPC and update the route table associated with your subnets to route traffic destined for the internet through the internet gateway.
+
+
+IP Address range : When you create a VPC, you define an IPv4 CIDR block (Classless Inter-Domain Routing) that represents the range of IP addresses available for instances and resources within that VPC. This range is typically specified in CIDR notation (e.g., 10.0.0.0/16), where the number after the slash represents the number of bits in the network prefix. This range determines the scope of IP addresses that can be used within your VPC.
+
 
 Security Groups: Security groups act as virtual firewalls for your EC2 instances, controlling inbound and outbound traffic. You can specify rules to allow traffic based on protocols, ports, and source/destination IP addresses. Security groups are stateful, meaning any traffic allowed in is automatically allowed back out.
 
@@ -21,6 +30,7 @@ Key Pair: When you launch an EC2 instance, you can specify a key pair, consistin
 EBS (Elastic Block Store): EBS provides persistent block-level storage volumes for use with EC2 instances. You can attach EBS volumes to instances to provide storage for applications and data. EBS volumes can be created, attached, and detached from instances as needed, and they persist independently from the life of an instance.
 
 
-Elastic Beanstalk:
-  Elastic Beanstalk is a Platform as a Service (PaaS) offering from AWS that makes it easy to deploy, manage, and scale web applications and services developed with popular programming languages and frameworks such as Java, .NET, Node.js, Python, Ruby, Go, and Docker.
+Elastic Beanstalk:Elastic Beanstalk is a Platform as a Service (PaaS) offering from AWS that makes it easy to deploy, manage, and scale web applications and services developed with popular programming languages and frameworks such as Java, .NET, Node.js, Python, Ruby, Go, and Docker.
 How it works: With Elastic Beanstalk, you simply upload your application code, and it automatically handles the deployment, load balancing, auto-scaling, and monitoring of your application.
+
+IAM Roles:IAM roles in AWS are entities that define a set of permissions for making service requests within the AWS ecosystem. They establish trust relationships between trusted entities, such as AWS services or users, and AWS accounts. IAM roles provide temporary security credentials, ensuring secure access to resources without the need for long-term credentials. They are commonly used for granting permissions across accounts, integrating with AWS services, and adhering to the principle of least privilege for improved security.
