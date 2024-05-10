@@ -1,1 +1,17 @@
+Input:
 
+pandas 1.0.4 pypi
+
+numpy 1.9.5 pypi
+
+cherry red
+
+output :
+
+pandas==1.0.4 
+
+numpy==1.9.5
+
+linux command to get the above output: 
+
+echo "pandas 1.0.4 pypi numpy 1.9.5 pypi cherry red" | awk '{print $1"=="$2, $4"=="$5}'
