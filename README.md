@@ -4,65 +4,49 @@
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws&logoColor=white) ![Kubernetes](https://img.shields.io/badge/Kubernetes-Interview%20Prep-326CE5?logo=kubernetes&logoColor=white) ![DevOps](https://img.shields.io/badge/DevOps-CI%2FCD-2ea44f) ![DevSecOps](https://img.shields.io/badge/DevSecOps-Security-critical) ![2026](https://img.shields.io/badge/Updated-2026-blue)
 
-This repository started as personal interview notes. It is now organized as a practical preparation hub for AWS DevOps Engineer, Cloud Engineer, SRE and Platform Engineering interviews.
-
-The goal is to move beyond service definitions: explain trade-offs, failure modes, debugging steps, security controls, reliability, cost and automation.
+This repository started as personal interview notes and is now a structured preparation hub for AWS DevOps Engineer, Cloud Engineer, SRE and Platform Engineering interviews.
 
 ## Start here
 
-| Track | Start with |
+| Goal | Resource |
 |---|---|
-| 0–2 years | AWS fundamentals → Linux → Git → Docker → CI/CD |
-| 2–5 years | AWS networking → Terraform → Kubernetes → Jenkins/GitHub Actions → observability |
-| 5+ years | system design → reliability → security → FinOps → platform engineering |
-| Production scenarios | [Scenario Playbook](docs/scenario-playbook.md) |
-| Fast revision | [Rapid Fire 100](docs/rapid-fire-100.md) |
-| Mock interview | [Mock Interview](docs/mock-interview.md) |
-| 2026 topics | [Modern Topics](docs/modern-topics-2026.md) |
+| AWS fundamentals | `aws interview questions.txt` |
+| Docker | `Docker Interview Questions.txt` |
+| Kubernetes / EKS | `kubernetes interview questions.txt` |
+| ECS | `ECS interview.txt` |
+| Linux | `linux` |
+| Project storytelling | `project explanation.txt` |
+| Introduction | `Introduction for interview.txt` |
+| Jenkins | `Jenkins Interview Questions.md` |
+| Terraform | `Terraform Interview Questions.md` |
+| Git & GitHub | `Git & GitHub Interview Questions.md` |
+| DevSecOps | `DevSecOps Interview Questions.md` |
+| Python automation | `Python Automation Interview Questions.md` |
+| Production scenarios | `docs/scenario-playbook.md` |
+| Rapid revision | `docs/rapid-fire-100.md` |
+| Mock interview | `docs/mock-interview.md` |
+| 2026 topics | `docs/modern-topics-2026.md` |
 
-## New interview tracks
+## Modern interview tracks
 
-- [Observability & SRE](docs/observability-sre.md)
-- [GitOps & Platform Engineering](docs/gitops-platform.md)
-- [AI / Agentic DevOps](docs/ai-devops.md)
-- [Terraform, Ansible & CI/CD](docs/ansible-terraform-jenkins.md)
-
-## Current interview themes
-
-The repository focuses on cloud fundamentals plus Kubernetes, IaC, CI/CD, observability, security, cost optimization and scenario-based troubleshooting. It also covers GitOps, internal developer platforms and AI/agentic infrastructure as modern discussion areas.
+- `docs/observability-sre.md` — SLI, SLO, error budgets and production troubleshooting
+- `docs/gitops-platform.md` — GitOps, golden paths and internal developer platforms
+- `docs/ai-devops.md` — AI/agentic infrastructure, permissions and operational guardrails
+- `docs/ansible-terraform-jenkins.md` — automation and CI/CD scenarios
 
 ## Coverage
 
-- AWS architecture and networking
-- EKS/ECS and containers
-- Terraform and infrastructure drift
-- Jenkins and GitHub Actions
-- DevSecOps, IAM and secrets
-- Prometheus/Grafana/Datadog and SLOs
-- GitOps and platform engineering
-- FinOps and cost controls
-- AI/agentic infrastructure concepts
-- Linux, Bash and Python troubleshooting
+AWS architecture, networking, EKS/ECS, Terraform, Jenkins, GitHub Actions, Docker, Kubernetes, DevSecOps, IAM, secrets, observability, SRE, GitOps, FinOps, platform engineering, AI infrastructure, Linux, Bash and Python.
 
-## The interview answer framework
+## Interview answer framework
 
 Use this structure for scenario questions:
 
 ```text
-Situation
-   ↓
-Impact
-   ↓
-Diagnosis
-   ↓
-Fix
-   ↓
-Prevention
-   ↓
-Trade-off
+Situation → Impact → Diagnosis → Fix → Prevention → Trade-off
 ```
 
-Do not stop at a command or definition. Explain what evidence you would collect, why you would choose a fix, how you verify it and how you prevent recurrence.
+Do not stop at a command or definition. Explain the evidence you would collect, why you would choose a fix, how you verify it and how you prevent recurrence.
 
 ## Recommended study loop
 
@@ -70,8 +54,12 @@ Do not stop at a command or definition. Explain what evidence you would collect,
 
 Practice every topic at three levels: definition, implementation and production scenario.
 
+## Repository quality
+
+Legacy notes have been cleaned up where they contained stale terminology, empty placeholders, unsafe examples or obsolete claims. The remaining files are intended to be practical interview references rather than copied answer dumps.
+
 ## Contributing
 
 Corrections, better explanations, scenario questions, diagrams and practical labs are welcome. Keep answers vendor-aware, security-conscious and explicit about trade-offs.
 
-⭐ If this repository helps your preparation, consider starring it and sharing useful improvements through pull requests.
+⭐ If this repository helps your preparation, consider starring it and contributing useful improvements through pull requests.

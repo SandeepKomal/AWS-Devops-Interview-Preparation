@@ -1,36 +1,55 @@
-VPC (Virtual Private Cloud): VPC allows you to create a virtual network in the AWS cloud where you can launch AWS resources such as EC2 instances, RDS databases, and more. It provides you with control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.
+ # AWS Interview Questions
 
-Subnets: Subnets are subdivisions of a VPC's IP address range where you can place groups of resources. Within your VPC, you can create one or more subnets. Each subnet is associated with a specific availability zone within a region and represents a range of IP addresses within the larger VPC IP address range. They allow you to segment your network for better organization, security, and resource isolation. Subnets can be public (accessible from the internet) or private (accessible only from within the VPC or via a VPN connection).
+## Networking
 
-Route tables: A route table is a set of rules, known as routes, that determine where network traffic is directed. In the context of a VPC, you can create and manage route tables to control the flow of traffic between different subnets within the VPC and between the VPC and other networks, such as the internet or on-premises networks. Each subnet in a VPC must be associated with a route table, and you can customize the routes in the table to specify how traffic should be routed.
+**VPC:** A logically isolated AWS network where you define IP ranges, subnets, routing and network connectivity.
 
+**Public vs private subnet:** A public subnet has a route to an Internet Gateway. A private subnet does not have a direct route to an Internet Gateway. Private workloads can use controlled egress such as NAT Gateway or service-specific VPC endpoints.
 
-Internet Gateways:An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet. It essentially serves as a gateway through which traffic can flow to and from the internet. To enable internet access for resources within your VPC, you attach an internet gateway to your VPC and update the route table associated with your subnets to route traffic destined for the internet through the internet gateway.
+**Route table:** Determines where network traffic is sent.
 
+**Security Group vs NACL:** Security Groups are stateful and attached to ENIs/resources. Network ACLs are stateless rules applied at the subnet boundary.
 
-IP Address range : When you create a VPC, you define an IPv4 CIDR block (Classless Inter-Domain Routing) that represents the range of IP addresses available for instances and resources within that VPC. This range is typically specified in CIDR notation (e.g., 10.0.0.0/16), where the number after the slash represents the number of bits in the network prefix. This range determines the scope of IP addresses that can be used within your VPC.
+**Internet Gateway vs NAT Gateway:** An Internet Gateway provides VPC connectivity to/from the internet for appropriately routed resources. NAT Gateway allows private resources to initiate outbound internet connections without accepting unsolicited inbound connections.
 
+## Compute and scaling
 
-Security Groups: Security groups act as virtual firewalls for your EC2 instances, controlling inbound and outbound traffic. You can specify rules to allow traffic based on protocols, ports, and source/destination IP addresses. Security groups are stateful, meaning any traffic allowed in is automatically allowed back out.
+- EC2: virtual compute
+- AMI: template used to launch EC2 instances
+- Launch Template: reusable EC2 launch configuration
+- Auto Scaling Group: maintains desired capacity and replaces unhealthy instances
+- EBS: block storage for EC2
 
-S3 Bucket: Amazon S3 (Simple Storage Service) is a scalable object storage service offered by AWS. It allows you to store and retrieve any amount of data from anywhere on the web. An S3 bucket is a container for objects stored in S3. It's the fundamental entity in S3, and you can control access to buckets and objects through bucket policies and access control lists (ACLs).
+## Load balancing
 
-AWS Load Balancer: AWS offers several types of load balancers, including Application Load Balancer (ALB) and Network Load Balancer (NLB). Load balancers distribute incoming application or network traffic across multiple targets (such as EC2 instances) to ensure optimal resource utilization, fault tolerance, and high availability of your applications.
+**ALB:** Layer 7 HTTP/HTTPS routing, host/path rules and application-aware features.
 
-Target groups: Target Groups are logical groupings of resources that are registered with a load balancer. These resources can be instances, containers, IP addresses, or Lambda functions. When a load balancer receives a request, it forwards the request to one or more targets in the associated target group.
+**NLB:** Layer 4 TCP/UDP/TLS load balancing for high-performance network traffic.
 
-Auto Scaling: Auto Scaling allows you to automatically adjust the number of EC2 instances in your application based on demand or a defined schedule. It helps maintain application availability and ensures you have enough capacity to handle varying workloads. You can define scaling policies based on metrics like CPU utilization, network traffic, or custom metrics.
+**Target group:** Logical set of targets receiving load-balancer traffic.
 
-Launch Template: launch template is a configuration template used by autoscaling groups to launch instances or other resources. It defines parameters such as the instance type, AMI (Amazon Machine Image), key pair, security groups, and other settings required to launch instances. By using launch templates, autoscaling groups can ensure consistency across instances and simplify the process of launching new resources. 
+## S3
 
-AMI (Amazon Machine Image): An AMI is a pre-configured template used to create EC2 instances. It contains the operating system, application server, and applications required to launch an instance. You can create your own custom AMIs or use pre-built ones provided by AWS or the community.
+S3 is object storage. Know versioning, lifecycle policies, storage classes, encryption, Block Public Access, bucket policies, Object Ownership, replication and VPC endpoints.
 
-Key Pair: When you launch an EC2 instance, you can specify a key pair, consisting of a public key and a private key. The public key is stored on the instance, allowing you to securely SSH into the instance using the corresponding private key. Key pairs are used for authentication and secure communication with EC2 instances.
+## IAM
 
-EBS (Elastic Block Store): EBS provides persistent block-level storage volumes for use with EC2 instances. You can attach EBS volumes to instances to provide storage for applications and data. EBS volumes can be created, attached, and detached from instances as needed, and they persist independently from the life of an instance.
+Prefer short-lived credentials and IAM roles over long-lived access keys. Apply least privilege and understand trust policies versus permission policies.
 
+## RDS
 
-Elastic Beanstalk:Elastic Beanstalk is a Platform as a Service (PaaS) offering from AWS that makes it easy to deploy, manage, and scale web applications and services developed with popular programming languages and frameworks such as Java, .NET, Node.js, Python, Ruby, Go, and Docker.
-How it works: With Elastic Beanstalk, you simply upload your application code, and it automatically handles the deployment, load balancing, auto-scaling, and monitoring of your application.
+Know Multi-AZ for availability/failover, read replicas for read scaling, automated backups, parameter groups, security groups and encryption.
 
-IAM Roles:IAM roles in AWS are entities that define a set of permissions for making service requests within the AWS ecosystem. They establish trust relationships between trusted entities, such as AWS services or users, and AWS accounts. IAM roles provide temporary security credentials, ensuring secure access to resources without the need for long-term credentials. They are commonly used for granting permissions across accounts, integrating with AWS services, and adhering to the principle of least privilege for improved security.
+## Scenario questions
+
+1. Private EC2 cannot reach S3 — what do you check?
+2. ALB returns 502 — how do you isolate the failure?
+3. An ASG keeps replacing instances — what evidence do you collect?
+4. AWS costs increased suddenly — how do you investigate?
+5. A developer requests AdministratorAccess — how do you design the required permissions?
+6. An application needs multi-AZ resilience — what components must be redundant?
+7. How would you design DR across AWS regions?
+
+## Interview rule
+
+For senior questions, explain **architecture → security → reliability → cost → operational trade-offs**, not just the service definition.
