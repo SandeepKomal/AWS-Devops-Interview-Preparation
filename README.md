@@ -20,11 +20,18 @@ The goal is to move beyond service definitions: explain trade-offs, failure mode
 | Mock interview | [Mock Interview](docs/mock-interview.md) |
 | 2026 topics | [Modern Topics](docs/modern-topics-2026.md) |
 
+## New interview tracks
+
+- [Observability & SRE](docs/observability-sre.md)
+- [GitOps & Platform Engineering](docs/gitops-platform.md)
+- [AI / Agentic DevOps](docs/ai-devops.md)
+- [Terraform, Ansible & CI/CD](docs/ansible-terraform-jenkins.md)
+
 ## Current interview themes
 
-AWS DevOps interviews increasingly combine cloud fundamentals with Kubernetes, IaC, CI/CD, observability, security, cost optimization and scenario-based troubleshooting. Current platform-engineering discussions also emphasize developer experience, internal developer platforms, GitOps and AI/agentic infrastructure. 
+The repository focuses on cloud fundamentals plus Kubernetes, IaC, CI/CD, observability, security, cost optimization and scenario-based troubleshooting. It also covers GitOps, internal developer platforms and AI/agentic infrastructure as modern discussion areas.
 
-This repo therefore covers:
+## Coverage
 
 - AWS architecture and networking
 - EKS/ECS and containers
@@ -55,12 +62,16 @@ Prevention
 Trade-off
 ```
 
-Example: do not answer “CrashLoopBackOff means restart the pod.” Explain how you inspect logs/events, configuration, probes, dependencies and resource limits, then how you verify and prevent recurrence.
+Do not stop at a command or definition. Explain what evidence you would collect, why you would choose a fix, how you verify it and how you prevent recurrence.
 
 ## Recommended study loop
 
-Learn → Explain → Troubleshoot → Design → Automate
+**Learn → Explain → Troubleshoot → Design → Automate**
 
 Practice every topic at three levels: definition, implementation and production scenario.
 
-⭐ Contributions are welcome: corrections, better explanations, scenario questions, diagrams and practical labs.
+## Contributing
+
+Corrections, better explanations, scenario questions, diagrams and practical labs are welcome. Keep answers vendor-aware, security-conscious and explicit about trade-offs.
+
+⭐ If this repository helps your preparation, consider starring it and sharing useful improvements through pull requests.
