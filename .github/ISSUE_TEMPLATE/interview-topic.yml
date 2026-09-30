@@ -1,0 +1,33 @@
+name: Interview Topic
+description: Suggest a useful AWS, DevOps, SRE or platform-engineering interview topic
+title: "[TOPIC] "
+labels:
+  - enhancement
+assignees: []
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Interview question
+      description: What should candidates be asked?
+      placeholder: "Example: How would you diagnose EKS IP exhaustion?"
+    validations:
+      required: true
+  - type: textarea
+    id: answer
+    attributes:
+      label: Expected discussion
+      description: What concepts, trade-offs or failure modes should a good answer cover?
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Level
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+        - Senior / Staff
+    validations:
+      required: true
