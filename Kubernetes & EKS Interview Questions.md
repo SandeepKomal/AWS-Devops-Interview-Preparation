@@ -1,7 +1,6 @@
 # Kubernetes & EKS Interview Questions
 
 ## Core concepts
-
 Kubernetes is an open-source platform for orchestrating containerized workloads through a declarative API and control plane.
 
 Docker can build OCI-compatible container images. Kubernetes orchestrates containers through a container runtime; Kubernetes is not dependent on the Docker Engine.
@@ -13,7 +12,6 @@ DaemonSet: runs selected pods on nodes.
 Job/CronJob: finite task / scheduled task.
 
 ## Services
-
 ClusterIP = internal service exposure.
 NodePort = port exposed on each node.
 LoadBalancer = integration with an external/cloud load balancer.
@@ -22,33 +20,26 @@ ExternalName = maps a service name to external DNS.
 Ingress provides HTTP/HTTPS routing. Also understand the Gateway API and the role of a gateway/ingress controller.
 
 ## Config and secrets
-
 ConfigMap stores non-sensitive configuration. Kubernetes Secrets are API objects for sensitive data, but base64 encoding is not encryption by itself. Protect access with RBAC and use encryption at rest and/or an external secret manager where appropriate.
 
 ## RBAC
-
 Know Role, ClusterRole, RoleBinding, ClusterRoleBinding and ServiceAccount. Production permissions should follow least privilege rather than wildcard access.
 
 ## Scheduling
-
 Prepare nodeSelector, node affinity, pod affinity/anti-affinity, taints/tolerations, topology spread constraints and resource requests/limits.
 
 ## Storage
-
 StorageClass → PersistentVolume → PersistentVolumeClaim → Pod
 
 Understand dynamic provisioning, access modes and reclaim behavior.
 
 ## Scaling
-
 HPA changes pod replica count from metrics. VPA adjusts resource requests/limits according to observed usage and configuration. For EKS, also understand node autoscaling and available node capacity.
 
 ## High availability
-
 Use multi-AZ node placement, multiple replicas where appropriate, readiness/liveness/startup probes, PodDisruptionBudgets and topology spread. Dependencies such as databases need their own HA design.
 
 ## Troubleshooting
-
 Pending: inspect pod events, node capacity, taints, affinity, topology and storage.
 
 CrashLoopBackOff: inspect current/previous logs, events, startup configuration, probes, dependencies and resource limits.
@@ -60,11 +51,9 @@ OOMKilled: inspect memory requests/limits, actual usage and application behavior
 5xx: trace Client → Load Balancer/Ingress → Service → Endpoint/Pod → Application → Dependency.
 
 ## EKS-specific topics
-
 Prepare VPC CNI and pod IP allocation, subnet/IP exhaustion, ECR pulls, workload identity, AWS Load Balancer Controller, EBS/EFS CSI drivers, node groups, autoscaling, observability and security boundaries.
 
 ## Modern scenarios
-
 1. EKS pods cannot obtain IP addresses.
 2. CI passes but deployment returns 503.
 3. Nodes are healthy but pods remain Pending.

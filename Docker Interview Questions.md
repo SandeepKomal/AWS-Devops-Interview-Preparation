@@ -1,4 +1,4 @@
- # Docker Interview Questions
+# Docker Interview Questions
 
 ## Fundamentals
 
@@ -25,31 +25,24 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 ```
 
 ## CMD vs ENTRYPOINT
-
-ENTRYPOINT defines the main executable. CMD provides default arguments or a default command. With the exec form, CMD arguments can be supplied to an ENTRYPOINT.
+ENTRYPOINT defines the main executable. CMD provides default arguments or a default command.
 
 ## COPY vs ADD
-
-Prefer COPY for normal local file copying. ADD has additional behavior such as archive extraction, so use it only when that behavior is intentional.
+Prefer COPY for normal local file copying. ADD has additional behavior such as archive extraction.
 
 ## Storage
-
 Container writable layers are ephemeral. Use volumes or external storage when data must survive container replacement.
 
 ## Networking
-
-Know bridge networking, container DNS, published ports and how containers communicate across a user-defined network.
+Know bridge networking, container DNS, published ports and user-defined networks.
 
 ## Compose
-
-Docker Compose defines multi-container applications and their networks, volumes and configuration in YAML. Modern Compose uses the Compose Specification; do not rely on obsolete version-field examples.
+Docker Compose defines multi-container applications and their networks, volumes and configuration in YAML. Modern Compose uses the Compose Specification.
 
 ## Security
-
 Prepare rootless containers, non-root users, minimal base images, secret handling, image scanning, SBOMs, trusted registries and immutable image references.
 
 ## Useful commands
-
 ```bash
 docker ps -a
 docker images
@@ -64,7 +57,6 @@ docker save -o image.tar IMAGE
 ```
 
 ## Scenario questions
-
 1. Image size is 1.5 GB — how do you reduce it?
 2. Container works locally but fails in Kubernetes — what do you inspect?
 3. Container exits immediately — how do you troubleshoot?

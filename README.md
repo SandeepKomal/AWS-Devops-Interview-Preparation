@@ -10,13 +10,13 @@ This repository started as personal interview notes and is now a structured prep
 
 | Goal | Resource |
 |---|---|
-| AWS fundamentals | `aws interview questions.txt` |
-| Docker | `Docker Interview Questions.txt` |
-| Kubernetes / EKS | `kubernetes interview questions.txt` |
-| ECS | `ECS interview.txt` |
-| Linux | `linux` |
-| Project storytelling | `project explanation.txt` |
-| Introduction | `Introduction for interview.txt` |
+| AWS fundamentals | `AWS Interview Questions.md` |
+| Docker | `Docker Interview Questions.md` |
+| Kubernetes / EKS | `Kubernetes & EKS Interview Questions.md` |
+| ECS | `ECS Interview Questions.md` |
+| Linux | `Linux Interview Practice.md` |
+| Project storytelling | `Project Explanation.md` |
+| Introduction | `Introduction for an AWS DevOps Interview.md` |
 | Jenkins | `Jenkins Interview Questions.md` |
 | Terraform | `Terraform Interview Questions.md` |
 | Git & GitHub | `Git & GitHub Interview Questions.md` |

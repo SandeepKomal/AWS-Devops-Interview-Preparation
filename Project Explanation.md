@@ -3,13 +3,11 @@
 Use this structure for a real project. Replace placeholders with facts from your own experience.
 
 ## 60-second version
-
 My project is a cloud-native application running on AWS. The delivery platform uses CI/CD to build, test, scan and deploy application artifacts. Infrastructure is provisioned through Infrastructure as Code, workloads run on managed container platforms, secrets are managed outside source control, and observability covers application and infrastructure health.
 
 My responsibilities include infrastructure automation, CI/CD, containerization, Kubernetes/ECS operations, security controls, troubleshooting and production reliability.
 
 ## Architecture
-
 Developer → Git repository → CI pipeline → security/tests → container registry → deployment/GitOps → EKS/ECS → load balancer → users
 
 Terraform → AWS infrastructure

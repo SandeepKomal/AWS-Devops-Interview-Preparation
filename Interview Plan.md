@@ -1,7 +1,6 @@
 # AWS DevOps Interview Study Plan
 
 ## Core
-
 1. Introduction / elevator pitch
 2. Project architecture and responsibilities
 3. AWS
@@ -14,7 +13,6 @@
 10. Ansible
 
 ## Production depth
-
 11. DevSecOps and software supply chain
 12. Observability / Datadog / CloudWatch
 13. SRE: SLI, SLO, error budgets and incident response
@@ -23,21 +21,18 @@
 16. System design and architecture trade-offs
 
 ## Modern topics
-
 17. GitOps
 18. Platform engineering / Internal Developer Platforms
 19. Golden paths and developer experience
 20. AI / agentic infrastructure and operational guardrails
 
 ## Coding
-
 21. Bash
 22. Python automation
 23. JSON/YAML processing
 24. Troubleshooting scripts
 
 ## Practice loop
-
 **Learn → Explain → Troubleshoot → Design → Automate**
 
 Use docs/rapid-fire-100.md for revision, docs/scenario-playbook.md for production questions and docs/mock-interview.md for mock rounds.
